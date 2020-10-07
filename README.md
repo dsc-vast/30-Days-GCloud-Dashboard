@@ -2,14 +2,26 @@
 
 ### Under development
 
-### How to run
-* Install dependencies
+### Installations
+* Requirements 
+
+    `pip3 install -r requirements.txt`
+
 * Create the database by running main.py in scrapper
-* Create flask app 
+   
+      cd scraper
+      python3 main.py
+   
+ * Create flask app 
+
+	  `export FLASK_APP=server.py`
+  
 * Run flask app
+	
+	 `flask run`
+    
 
 ### Todo
 
- - [ ] Better Readme
  - [ ] Frontend
  - [ ] Sorting, Filtering and Searching
