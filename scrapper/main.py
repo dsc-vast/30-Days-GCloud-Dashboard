@@ -15,13 +15,13 @@ conn.execute("""
 urls = [
     'https://google.qwiklabs.com/public_profiles/d4ef0024-3c99-4d8a-8a1e-432c7f90d4b5',
     'https://google.qwiklabs.com/public_profiles/2648e85b-eed1-444f-a21a-864da942d851',
-    'https://google.qwiklabs.com/public_profiles/1720359b-dd55-41b5-9a30-869101cdfeb7',
+    'https://google.qwiklabs.com/public_profiles/1720359b-dd55-41b5-9a30-869101cdfeb7'
   ]
 for i in urls:
   x = scrap.scrap(i)
   # Get the id by removing the first part of the url
   id = i.replace('https://google.qwiklabs.com/public_profiles/','')
-
+  id = id.replace('https://www.qwiklabs.com/public_profiles/','')
   # Get the cursor
   cur = conn.cursor()
 
