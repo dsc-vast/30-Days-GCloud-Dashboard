@@ -15,6 +15,7 @@ conn.execute("""
 url_file = open('urls.txt', 'r')
 urls = []
 
+
 for i in url_file.readlines():
     urls.append(i[:-1])
 
