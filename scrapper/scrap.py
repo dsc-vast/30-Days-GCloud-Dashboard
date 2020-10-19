@@ -1,5 +1,6 @@
 def scrap(url):
     import requests
+    import json
     from bs4 import BeautifulSoup
 
     # Challenges according to syllabus
@@ -20,7 +21,7 @@ def scrap(url):
     #Empty array to hold the completed quests
     COMPLETED_QUESTS = []
     r = requests.get(url)
-    soup = BeautifulSoup(r.content, 'html5lib')
+    soup = BeautifulSoup(r.content, 'html.parser')
 
     # Get the profile details
     profile = soup.findAll('div', attrs = {'class':'public-profile__hero'})[0]
@@ -29,15 +30,13 @@ def scrap(url):
     total = str(soup.find('p', attrs = {'class':'public-profile__hero__details l-mbm'}).text).split('\n')
 
     # Get all the completed quest details into quests
-    quests = soup.findAll('div', attrs = {'class':'public-profile__badges'})
-    for row in quests[0].findAll('div', attrs = {'class':'public-profile__badge'}):
-        
-        # Get each quest
-        divs = row.findChildren("div" , recursive=False)
+    quests = soup.findAll('ql-badge')
+    
+    for row in quests:
         
         # Compare with the syllabus and add if it is in the syllabus
-        if divs[1].text.strip() in CHALLENGES_AVAILABLE:
-            COMPLETED_QUESTS.append(divs[1].text.strip())
+        if json.loads(row['badge'])['title'] in CHALLENGES_AVAILABLE:
+            COMPLETED_QUESTS.append(json.loads(row['badge'])['title'])
 
     
     total_completed = {'Name': name, 'completed_quests':COMPLETED_QUESTS ,'labs': total[1], 'quests': total[4] }
