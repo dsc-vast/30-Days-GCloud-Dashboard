@@ -9,7 +9,7 @@
 
 * Create the database by running main.py in scrapper
    
-      cd scraper
+      cd scrapper
       python3 main.py
    
  * Create flask app 
