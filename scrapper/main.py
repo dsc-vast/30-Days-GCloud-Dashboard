@@ -43,7 +43,7 @@ for i in urls:
     print('completed' , tmp , 'out of' , total)
     tmp+=1
   except:
-    print('failed')
+    print('failed to get url',i)
     fail += 1  
 
 
