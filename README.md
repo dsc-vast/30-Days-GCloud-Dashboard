@@ -23,8 +23,8 @@
  * Create flask app 
 
 	```
-	  cd backend
-	  export FLASK_APP=server.py
+	cd backend
+	export FLASK_APP=server.py
 	```
   
 * Run flask app
