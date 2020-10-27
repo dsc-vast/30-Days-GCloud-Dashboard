@@ -1,3 +1,4 @@
+
 # 30 Days Gcloud Dashboard
 
 ### Under development
@@ -5,7 +6,14 @@
 ### Installations
 * Requirements 
 
-    `pip3 install -r requirements.txt`
+    ```
+    pip3 install -r requirements.txt
+    ```
+* Install npm packages
+	```
+	cd frontend
+	npm install
+	``` 
 
 * Create the database by running main.py in scrapper
    
@@ -14,14 +22,17 @@
    
  * Create flask app 
 
-	  `export FLASK_APP=server.py`
+	```
+	  cd backend
+	  export FLASK_APP=server.py
+	```
   
 * Run flask app
 	
 	 `flask run`
     
-
-### Todo
-
- - [ ] Frontend
- - [ ] Sorting, Filtering and Searching
+* Run Frontend
+	```
+	cd frontend
+	npm run serve
+	```
