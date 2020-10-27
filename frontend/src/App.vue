@@ -12,7 +12,6 @@
         <th>{{ item.questscompleted }}</th>
       </tr>
     </table>
-    {{ detail }}
   </div>
 </template>
 
