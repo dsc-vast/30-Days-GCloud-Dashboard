@@ -9,7 +9,8 @@ conn.execute("""
   CREATE TABLE IF NOT EXISTS PARTICIPANTS(
     ID  TEXT  UNIQUE,
     NAME  TEXT  NOT NULL,
-    QUESTS  INT  NOT NULL
+    QUESTS  INT  NOT NULL,
+    LAST  TEXT NOT NULL
   );""")
 
 url_file = open('urls.txt', 'r')
@@ -38,12 +39,12 @@ for i in urls:
     if(res):
         conn.execute("UPDATE PARTICIPANTS SET QUESTS=? WHERE ID=?",(len(x["completed_quests"]),id))
     else:
-        conn.execute("INSERT INTO PARTICIPANTS VALUES(?,?,?)",(id,x["Name"], len(x["completed_quests"])))
+        conn.execute("INSERT INTO PARTICIPANTS VALUES(?,?,?,?)",(id,x["Name"], len(x["completed_quests"]), x["last"]))
     conn.commit()
     print('completed' , tmp , 'out of' , total)
     tmp+=1
   except:
-    print('failed:', i)
+    print('Failed url:', i)
     fail += 1  
 
 
