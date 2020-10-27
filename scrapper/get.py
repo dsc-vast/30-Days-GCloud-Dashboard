@@ -15,6 +15,7 @@ def get():
     x["id"] = i[0]
     x["name"] = i[1]
     x["questscompleted"] = i[2]
+    x["last"] = i[3]
     response.append(x)
   conn.close()
   return response
@@ -35,6 +36,7 @@ def getSorted():
     x["id"] = i[0]
     x["name"] = i[1]
     x["questscompleted"] = i[2]
+    x["last"] = i[3]
     response.append(x)
 
   return response
@@ -56,6 +58,7 @@ def getNameSorted():
     x["id"] = i[0]
     x["name"] = i[1]
     x["questscompleted"] = i[2]
+    x["last"] = i[3]
     response.append(x)
 
   return response

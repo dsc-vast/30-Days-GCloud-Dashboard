@@ -5,11 +5,13 @@
         <th>ID</th>
         <th class="header" v-on:click="sortedName()">Name</th>
         <th class="header" v-on:click="sortedQuests()">Quests Completed</th>
+        <th>Last Completed</th>
       </tr>
       <tr v-for="item in detail" :key="item.id">
         <th>{{ item.id }}</th>
         <th>{{ item.name }}</th>
         <th>{{ item.questscompleted }}</th>
+        <th>{{ item.last }}</th>
       </tr>
     </table>
   </div>

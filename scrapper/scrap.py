@@ -2,6 +2,7 @@ def scrap(url):
     import requests
     import json
     from bs4 import BeautifulSoup
+    from datetime import datetime
 
     # Challenges according to syllabus
     CHALLENGES_AVAILABLE = [
@@ -32,12 +33,16 @@ def scrap(url):
     # Get all the completed quest details into quests
     quests = soup.findAll('ql-badge')
     
+    dates = []
     for row in quests:
-        
         # Compare with the syllabus and add if it is in the syllabus
         if json.loads(row['badge'])['title'] in CHALLENGES_AVAILABLE:
             COMPLETED_QUESTS.append(json.loads(row['badge'])['title'])
-
+            dates.append(json.loads(row['badge'])["completedAt"])
+    dates.sort(key = lambda date: datetime.strptime(date, '%b %d, %Y'))
     
-    total_completed = {'Name': name, 'completed_quests':COMPLETED_QUESTS ,'labs': total[1], 'quests': total[4] }
+    if(len(dates) == 0 ):
+        dates = ['']
+    total_completed = {'Name': name, 'completed_quests':COMPLETED_QUESTS ,'labs': total[1], 'quests': total[4], 'last': dates[-1] }
+
     return(total_completed)
