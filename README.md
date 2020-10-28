@@ -2,26 +2,49 @@
 
 ### Under development
 
-### Installations
-* Requirements 
+### Instructions to run
 
-    `pip3 install -r requirements.txt`
+* Install Requirements
 
-* Create the database by running main.py in scrapper
+    ```
+    pip3 install -r requirements.txt
+    ```
+
+* Install npm packages
+
+    ```
+    cd frontend
+    npm install
+    ```
+
+ * Create the database by running main.py in scrapper
    
-      cd scrapper
-      python3 main.py
-   
+    ```
+    cd scraper
+    python3 main.py
+    ```
+
  * Create flask app 
 
-	  `export FLASK_APP=server.py`
+    ```
+    cd backend
+    export FLASK_APP=server.py
+    ```
   
-* Run flask app
-	
-	 `flask run`
+ * Run flask app
+
+   ```
+   cd backend
+   flask run
+   ```
+	  
+* Go to http://localhost:5000 to get the json response
     
+* Run Frontend
 
-### Todo
+    ```
+    cd frontend
+    npm run serve
+    ```
 
- - [ ] Frontend
- - [ ] Sorting, Filtering and Searching
+* Go to http://localhost:8080/
