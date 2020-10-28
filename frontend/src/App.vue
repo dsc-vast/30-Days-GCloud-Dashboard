@@ -26,7 +26,8 @@ export default {
   },
   data: () => {
     return{
-      detail: ''
+      detail: '',
+      status: 'name'
     }
   },
   mounted(){
@@ -39,17 +40,43 @@ export default {
   },
   methods: {
     sortedQuests(){
-      var newUrl = url + '/sorted'
-      axios
-      .get(newUrl)
-      .then( (response) => { this.detail = response.data })
+      if(! (this.status === 'quest') ){
+        var data = eval(this.detail);
+        var results = data;
+        results.sort(function(a,b){
+          if(a.questscompleted == b.questscompleted)
+            return 0;
+          if(a.questscompleted < b.questscompleted)
+            return -1;
+          if(a.questscompleted > b.questscompleted)
+            return 1;
+        });
+        this.detail = results;
+        this.status = 'quest';
+      }
+      else{
+        this.detail = this.detail.reverse();
+      }
       this.$forceUpdate();
     },
     sortedName(){
-      var newUrl = url + '/name'
-      axios
-      .get(newUrl)
-      .then( (response) => { this.detail = response.data })
+      if(! (this.status === 'name') ){
+        var data = eval(this.detail);
+        var results = data;
+        results.sort(function(a,b){
+          if(a.name.toLowerCase() == b.name.toLowerCase())
+            return 0;
+          if(a.name.toLowerCase() < b.name.toLowerCase())
+            return -1;
+          if(a.name.toLowerCase() > b.name.toLowerCase())
+            return 1;
+        });
+      this.detail = results;
+      this.status = 'name';
+      }
+      else{
+        this.detail = this.detail.reverse();
+      }
       this.$forceUpdate();
 
     }
@@ -64,13 +91,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 5px;
 }
 table{
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
+  width: 98%;
+  border: 2px solid black;
+  margin: 1%;
 }
 
 th, td{
@@ -78,7 +106,17 @@ th, td{
   padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2
+tr{
+  border: 1px solid black;
+}
+tr:nth-child(odd){
+  background-color: #0C0C1E;
+  color: white;
+}
+
+tr:nth-child(even){
+  background-color: #1B2E3C;
+  color: white;
 }
 
 .header{
