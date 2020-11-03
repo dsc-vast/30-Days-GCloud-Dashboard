@@ -18,7 +18,7 @@ urls = []
 
 
 for i in url_file.readlines():
-    urls.append(i[:-1])
+    urls.append(i.replace('\n',''))
 
 total = len(urls)
 tmp = 0
@@ -41,10 +41,10 @@ for i in urls:
     else:
         conn.execute("INSERT INTO PARTICIPANTS VALUES(?,?,?,?)",(id,x["Name"], len(x["completed_quests"]), x["last"]))
     conn.commit()
-    print('completed' , tmp , 'out of' , total)
     tmp+=1
+    print('completed {0} out of {1}'.format(tmp, total))
   except:
-    print('Failed url:', i)
+    print('Failed url: {0}'.format(i))
     fail += 1  
 
 
